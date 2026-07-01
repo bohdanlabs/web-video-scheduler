@@ -1,0 +1,32 @@
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log
+logs/
+
+# Media (don't commit large video files)
+*.mp4
+*.mov
+*.mkv
+*.webm
+
+# Real schedules with private URLs
+schedule.json
+!schedule.example.json
+
+# Local nginx configs with real domains
+nginx/local-*

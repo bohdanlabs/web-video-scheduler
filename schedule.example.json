@@ -1,0 +1,31 @@
+{
+  "_comment": "TV Scheduler — schedule config. Edit this file to change times, videos, or screen targets. No page changes needed.",
+  "_format": "time = HH:MM 24h. days = [0..6] (0=Sun, 1=Mon, ..., 6=Sat). screens = [ids] or ['all']. max_duration_sec = safety stop timer.",
+
+  "schedule": [
+    {
+      "_description": "Morning announcement, every day, all screens",
+      "time": "08:59",
+      "days": [0, 1, 2, 3, 4, 5, 6],
+      "screens": ["all"],
+      "video_url": "https://your-server.example.com/videos/morning.mp4",
+      "max_duration_sec": 240
+    },
+    {
+      "_description": "Lunch promo, weekdays only, lobby + canteen screens",
+      "time": "13:00",
+      "days": [1, 2, 3, 4, 5],
+      "screens": ["lobby", "canteen"],
+      "video_url": "https://your-server.example.com/videos/lunch_promo.mp4",
+      "max_duration_sec": 90
+    },
+    {
+      "_description": "Weekend special, Saturday and Sunday only",
+      "time": "10:00",
+      "days": [0, 6],
+      "screens": ["all"],
+      "video_url": "https://your-server.example.com/videos/weekend.mp4",
+      "max_duration_sec": 180
+    }
+  ]
+}

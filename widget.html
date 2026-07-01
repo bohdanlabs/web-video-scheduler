@@ -1,0 +1,246 @@
+<!--
+  ============================================================
+  TV Scheduler widget — drop-in scheduled video overlay
+  ============================================================
+  Paste this entire block just before the closing </body> tag
+  of your existing website. It will not affect anything else
+  on the page — all element IDs use the "vs-" prefix and the
+  overlay only appears at scheduled times.
+
+  How it works:
+   1. Once a minute, fetches a JSON config from CONFIG_URL.
+   2. Once a second, checks whether any scheduled item matches now.
+   3. At the scheduled time, plays the video full-screen on top.
+   4. When the video ends, the overlay disappears.
+
+  Schedule management lives in the JSON config — not in this
+  code. You can change times, video files, and screen groups
+  without ever editing the page.
+
+  See https://github.com/YOUR-USERNAME/tv-scheduler for docs.
+  ============================================================
+-->
+
+<style>
+  #vs-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    z-index: 2147483647;
+    align-items: center;
+    justify-content: center;
+  }
+  #vs-overlay.active { display: flex; }
+  #vs-overlay video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  #vs-unlock {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 2147483646;
+    padding: 18px 30px;
+    background: rgba(0, 100, 200, 0.95);
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+  #vs-unlock.show { display: block; }
+</style>
+
+<!-- Empty overlay container — <video> is created dynamically at playback time -->
+<div id="vs-overlay"></div>
+<button id="vs-unlock">Tap to enable sound</button>
+
+<script>
+(function() {
+  'use strict';
+
+  // ====== CONFIG ======
+  // URL of the JSON schedule file. Can be on any server reachable by the browser.
+  // Change schedule remotely by editing this file — no page changes needed.
+  const CONFIG_URL = 'https://your-server.example.com/schedule.json';
+
+  // Screen identifier. Read from URL: yoursite.com/page?screen=lobby
+  // Defaults to 'all' if not specified — useful for single-screen setups.
+  const SCREEN_ID = new URLSearchParams(location.search).get('screen') || 'all';
+
+  // How often to refresh the schedule (milliseconds).
+  const CONFIG_REFRESH_MS = 60 * 1000;
+  // ====================
+
+  const overlay = document.getElementById('vs-overlay');
+  const unlockBtn = document.getElementById('vs-unlock');
+
+  let schedule = [];
+  let lastTriggered = {};
+  let audioUnlocked = false;
+  let safetyTimer = null;
+  let player = null; // <video> created dynamically on playback
+
+  // ============================================================
+  // Audio unlock — Web Audio API priming on first user interaction
+  // ============================================================
+  // Browsers block <video> autoplay with sound until the user interacts.
+  // A silent oscillator primes the audio context so the scheduled video
+  // can later play with sound cleanly.
+  unlockBtn.classList.add('show');
+
+  function unlockAudio() {
+    if (audioUnlocked) return;
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) {
+        const ctx = new AudioCtx();
+        if (ctx.state === 'suspended') ctx.resume();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        gain.gain.value = 0;
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.001);
+      }
+      audioUnlocked = true;
+      unlockBtn.classList.remove('show');
+    } catch (err) {
+      console.error('[tv-scheduler] Audio unlock failed:', err);
+      audioUnlocked = true;
+      unlockBtn.classList.remove('show');
+    }
+  }
+
+  unlockBtn.addEventListener('click', unlockAudio);
+  document.body.addEventListener('click', unlockAudio, { capture: true });
+  document.body.addEventListener('keydown', unlockAudio, { capture: true });
+  document.body.addEventListener('touchstart', unlockAudio, { capture: true });
+
+  // ============================================================
+  // Load and refresh schedule from JSON config
+  // ============================================================
+  async function loadConfig() {
+    try {
+      const response = await fetch(CONFIG_URL + '?t=' + Date.now(), { cache: 'no-store' });
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      const data = await response.json();
+
+      // Filter items for this screen
+      schedule = (data.schedule || []).filter(item => {
+        if (!item.screens || item.screens.length === 0) return true;
+        return item.screens.includes('all') || item.screens.includes(SCREEN_ID);
+      });
+
+      console.log('[tv-scheduler] Loaded ' + schedule.length + ' scheduled items for screen "' + SCREEN_ID + '"');
+    } catch (err) {
+      console.error('[tv-scheduler] Failed to load schedule:', err);
+    }
+  }
+
+  // ============================================================
+  // Play / stop the scheduled video — create <video> dynamically
+  // ============================================================
+  // KEY INSIGHT: instead of having a <video> element sit in the DOM
+  // all the time, we create it fresh at playback time and destroy it
+  // when the video ends. Between plays, there is no <video> for the
+  // browser to autoplay, buffer, or "leak" audio from. This is the
+  // root-cause fix for audio-leak bugs on Android kiosk browsers.
+
+  function playVideo(item) {
+    console.log('[tv-scheduler] Playing:', item.video_url);
+
+    player = document.createElement('video');
+    player.playsInline = true;
+    player.muted = false;
+    player.volume = 1.0;
+
+    const source = document.createElement('source');
+    source.src = item.video_url;
+    source.type = 'video/mp4';
+    player.appendChild(source);
+
+    player.addEventListener('ended', stopVideo);
+
+    overlay.appendChild(player);
+    overlay.classList.add('active');
+
+    player.play().catch(err => {
+      console.warn('[tv-scheduler] Audio-blocked, playing muted:', err);
+      player.muted = true;
+      player.play();
+    });
+
+    // Safety stop in case 'ended' never fires
+    const safetyMs = (item.max_duration_sec || 300) * 1000;
+    safetyTimer = setTimeout(stopVideo, safetyMs);
+  }
+
+  function stopVideo() {
+    console.log('[tv-scheduler] Stopping video');
+    overlay.classList.remove('active');
+
+    if (player) {
+      player.pause();
+      player.removeAttribute('src');
+      player.load(); // force buffer cleanup
+      if (player.parentNode) player.parentNode.removeChild(player);
+      player = null;
+    }
+
+    if (safetyTimer) {
+      clearTimeout(safetyTimer);
+      safetyTimer = null;
+    }
+  }
+
+  // ============================================================
+  // Check the schedule once a second
+  // ============================================================
+  function checkSchedule() {
+    const now = new Date();
+    const hh = String(now.getHours()).padStart(2, '0');
+    const mm = String(now.getMinutes()).padStart(2, '0');
+    const currentTime = hh + ':' + mm;
+    const dateKey = now.toDateString();
+    const dayOfWeek = now.getDay(); // 0 = Sunday, 6 = Saturday
+
+    for (const item of schedule) {
+      if (item.time !== currentTime) continue;
+      if (item.days && item.days.length > 0 && !item.days.includes(dayOfWeek)) continue;
+
+      // Per-day guard: trigger each item at most once per day
+      const triggerKey = dateKey + '|' + item.time + '|' + item.video_url;
+      if (lastTriggered[triggerKey]) continue;
+
+      lastTriggered[triggerKey] = true;
+      playVideo(item);
+      break; // one video at a time
+    }
+  }
+
+  // ============================================================
+  // Start
+  // ============================================================
+  loadConfig();
+  setInterval(loadConfig, CONFIG_REFRESH_MS);
+  setInterval(checkSchedule, 1000);
+
+  // Clean up old trigger keys once an hour so the object doesn't grow forever
+  setInterval(() => {
+    const today = new Date().toDateString();
+    for (const key in lastTriggered) {
+      if (!key.startsWith(today)) delete lastTriggered[key];
+    }
+  }, 60 * 60 * 1000);
+
+})();
+</script>
