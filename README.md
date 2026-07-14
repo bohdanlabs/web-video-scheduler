@@ -1,5 +1,4 @@
-# TV Scheduler
-
+# Web Video Scheduler
 > A drop-in widget that adds a scheduled video overlay to any website. Paste one snippet, edit a JSON file, and your site plays full-screen video at exact times. No backend, no build step, no dependencies.
 
 ![TV Scheduler — scheduled video overlay running on any web page](docs/demo.svg)

@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- [Assumption — translated from RU original] -->
+  <title>Web Video Scheduler — Schedule Video Content on Your Screens</title>
+  <meta name="description" content="Turn any screen in your venue into a smart display. Pay once, no monthly subscription. Full control. Your data on your own server." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav__logo" aria-label="Web Video Scheduler home">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true" focusable="false">
+      <rect x="1" y="2" width="16" height="11" rx="2" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M7 6.5l4 2.5-4 2.5V6.5z" fill="currentColor"/>
+      <line x1="5" y1="15" x2="13" y2="15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+    <span>Web Video Scheduler</span>
+  </a>
+
+  <ul class="nav__links">
+    <li><a href="#pain"     data-en="Problem"   data-uk="Проблема">Problem</a></li>
+    <li><a href="#how"      data-en="How It Works" data-uk="Як це працює">How It Works</a></li>
+    <li><a href="#who"      data-en="Who It's For" data-uk="Для кого">Who It's For</a></li>
+    <li><a href="#pricing"  data-en="Pricing"   data-uk="Ціни">Pricing</a></li>
+    <li><a href="demo.html" data-en="Demo"      data-uk="Демо">Demo</a></li>
+  </ul>
+
+  <div class="nav__right">
+    <a href="https://t.me/Boeing911" class="btn-contact" target="_blank" rel="noopener"
+       data-en="Contact →" data-uk="Написати →">Contact →</a>
+    <button class="lang-toggle" aria-label="Switch language">UK</button>
+    <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="nav__mobile" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
+  <a href="#pain"     data-en="Problem"      data-uk="Проблема">Problem</a>
+  <a href="#how"      data-en="How It Works" data-uk="Як це працює">How It Works</a>
+  <a href="#who"      data-en="Who It's For" data-uk="Для кого">Who It's For</a>
+  <a href="demo.html" data-en="Demo"         data-uk="Демо">Demo</a>
+  <a href="#pricing"  data-en="Pricing"      data-uk="Ціни">Pricing</a>
+  <a href="https://t.me/Boeing911" target="_blank" rel="noopener"
+     data-en="Contact on Telegram →" data-uk="Написати в Telegram →">Contact on Telegram →</a>
+</div>
+
+<main>
+
+<!-- ============================================================
+     SECTION 1: HERO
+     ============================================================ -->
+<section class="hero" aria-label="Hero">
+  <div class="hero__orb hero__orb--1" aria-hidden="true"></div>
+  <div class="hero__orb hero__orb--2" aria-hidden="true"></div>
+  <div class="hero__orb hero__orb--3" aria-hidden="true"></div>
+  <div class="hero__content">
+
+    <div class="hero__eyebrow"
+         data-en="Running 24/7 on real hardware"
+         data-uk="Працює 24/7 на реальному обладнанні">
+      Running 24/7 on real hardware
+    </div>
+
+    <h1 class="hero__headline">
+      <span data-en="Your screen." data-uk="Ваш екран.">Your screen.</span>
+      <span class="accent" data-en=" Always showing the right content." data-uk=" Завжди показує те, що потрібно."> Always showing the right content.</span>
+    </h1>
+
+    <p class="hero__tagline"
+       data-en="Update any screen in a few clicks. No IT. No monthly subscription."
+       data-uk="Оновлюйте будь-який екран за кілька кліків. Без програміста. Без щомісячної підписки.">
+      Update any screen in a few clicks. No IT. No monthly subscription.
+    </p>
+
+    <p class="hero__sub"
+       data-en="Pay once. Manage everything yourself. Your data stays on your own server."
+       data-uk="Платите один раз. Керуйте всім самі. Ваші дані залишаються на вашому сервері.">
+      Pay once. Manage everything yourself. Your data stays on your own server.
+    </p>
+
+    <div class="hero__cta-row">
+      <a href="demo.html" class="btn-primary"
+         data-en="See the demo →"
+         data-uk="Дивитись демо →">See the demo →</a>
+      <a href="https://t.me/Boeing911" class="btn-secondary" target="_blank" rel="noopener"
+         data-en="Talk to us"
+         data-uk="Поговорити з нами">Talk to us</a>
+    </div>
+
+    <p class="hero__support"
+       data-en="Built for businesses that change promotions often — without paying someone every time."
+       data-uk="Створено для бізнесу, який часто змінює акції — без оплати програміста щоразу.">
+      Built for businesses that change promotions often — without paying someone every time.
+    </p>
+
+  </div>
+</section>
+
+<div class="section__divider" role="separator"></div>
+
+<!-- ============================================================
+     SECTION 2: PAIN
+     ============================================================ -->
+<section id="pain" aria-label="The problem">
+  <div class="section">
+
+    <div class="reveal">
+      <p class="section__label" data-en="The Problem" data-uk="Проблема">The Problem</p>
+      <!-- [Assumption — translated from RU original] -->
+      <h2 class="section__title"
+          data-en="Still showing the content you uploaded six months ago?"
+          data-uk="Досі показуєте той самий контент, що встановили пів року тому?">
+        Still showing the content you uploaded six months ago?
+      </h2>
+      <!-- [Assumption — translated from RU original] -->
+      <p class="section__sub"
+         data-en="You have screens. The content never changes — because every edit means a call to a developer. So your screen shows whatever was set up last time."
+         data-uk="Екрани є. Контент не змінюється — бо кожна правка означає дзвінок програмісту. Тому на екрані крутиться те, що поставили востаннє.">
+        You have screens. The content never changes — because every edit means a call to a developer. So your screen shows whatever was set up last time.
+      </p>
+    </div>
+
+    <div class="pain-grid">
+      <!-- BEFORE -->
+      <div class="pain-card pain-card--before reveal">
+        <p class="pain-card__label" data-en="Now — without WVS" data-uk="Зараз — без WVS">Now — without WVS</p>
+        <h3 class="pain-card__title"
+            data-en="Every change = a call to IT"
+            data-uk="Кожна правка = дзвінок IT">Every change = a call to IT</h3>
+        <!-- [Assumption — translated from RU original] -->
+        <p class="pain-card__text"
+           data-en="Owner wants to update the lunch special → calls developer → waits days → pays for work → the screen finally updates. Next week: repeat."
+           data-uk="Власник хоче оновити бізнес-ланч → дзвонить програмісту → чекає кілька днів → платить за роботу → екран оновлюється. Наступного тижня: все знову.">
+          Owner wants to update the lunch special → calls developer → waits days → pays for work → the screen finally updates. Next week: repeat.
+        </p>
+      </div>
+
+      <!-- AFTER -->
+      <div class="pain-card pain-card--after reveal">
+        <p class="pain-card__label" data-en="With WVS" data-uk="З WVS">With WVS</p>
+        <!-- [Assumption — translated from RU original] -->
+        <h3 class="pain-card__title"
+            data-en="Owner updates in 3 clicks, no IT"
+            data-uk="Власник змінює за 3 кліки, без IT">Owner updates in 3 clicks, no IT</h3>
+        <p class="pain-card__text"
+           data-en="We don't sell a video player. We sell freedom from updating screens the hard way."
+           data-uk="Ми продаємо не відеоплеєр. Ми продаємо свободу від складного й постійного оновлення екранів.">
+          We don't sell a video player. We sell freedom from updating screens the hard way.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section__divider" role="separator"></div>
+
+<!-- ============================================================
+     SECTION 3: HOW IT WORKS
+     ============================================================ -->
+<section id="how" aria-label="How it works">
+  <div class="section">
+
+    <div class="reveal">
+      <p class="section__label" data-en="How It Works" data-uk="Як це працює">How It Works</p>
+      <h2 class="section__title"
+          data-en="Install once. Update in clicks. Runs automatically."
+          data-uk="Встановили один раз. Змінюєте за кілька кліків. Далі все автоматично.">Install once. Update in clicks. Runs automatically.</h2>
+    </div>
+
+    <div class="steps">
+
+      <div class="step reveal">
+        <div class="step__num">1</div>
+        <h3 class="step__title" data-en="Installation" data-uk="Встановлення">Installation</h3>
+        <p class="step__text"
+           data-en="We install WVS on your website or server. One time. No technical work required from you."
+           data-uk="Ми встановлюємо WVS на ваш сайт або сервер. Один раз. Від вас не потрібно жодних технічних дій.">
+          We install WVS on your website or server. One time. No technical work required from you.
+        </p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step__num">2</div>
+        <h3 class="step__title"
+            data-en="Upload. Schedule. Done."
+            data-uk="Завантажте. Заплануйте. Готово.">Upload. Schedule. Done.</h3>
+        <p class="step__text"
+           data-en="Upload your video, choose when it should play, save. That's it. A few clicks, no code, no waiting."
+           data-uk="Завантажте відео, виберіть час показу, збережіть. Усього кілька кліків — без коду та без очікування.">
+          Upload your video, choose when it should play, save. That's it. A few clicks, no code, no waiting.
+        </p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step__num">3</div>
+        <h3 class="step__title"
+            data-en="It updates itself"
+            data-uk="Працює само">It updates itself</h3>
+        <p class="step__text"
+           data-en="Your screens switch content automatically, exactly on schedule. Once it's set up, there's no need to call IT every time you want to make a change."
+           data-uk="Екрани автоматично змінюють контент точно за розкладом. Після налаштування більше не потрібно звертатися до програміста щоразу, коли потрібно щось оновити.">
+          Your screens switch content automatically, exactly on schedule. Once it's set up, there's no need to call IT every time you want to make a change.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<div class="section__divider" role="separator"></div>
+
+<!-- ============================================================
+     SECTION 4: WHO IT'S FOR
+     ============================================================ -->
+<section id="who" aria-label="Who it's for">
+  <div class="section">
+
+    <div class="reveal">
+      <p class="section__label" data-en="Who It's For" data-uk="Для кого">Who It's For</p>
+      <h2 class="section__title"
+          data-en="Built for businesses that rely on screens every day."
+          data-uk="Створено для бізнесу, який щодня використовує екрани.">Built for businesses that rely on screens every day.</h2>
+    </div>
+
+    <div class="segments">
+
+      <!-- Restaurants & Cafés -->
+      <div class="segment reveal">
+        <div class="segment__icon" aria-hidden="true">🍽</div>
+        <!-- [Assumption — translated from RU original] -->
+        <h3 class="segment__title"
+            data-en="Restaurants &amp; Cafés"
+            data-uk="Ресторани та кафе">Restaurants &amp; Cafés</h3>
+        <p class="segment__pain"
+           data-en="Menus change. Lunch starts. Happy Hour begins. Your screens should keep up automatically — not after another call to IT."
+           data-uk="Меню змінюється. Починається бізнес-ланч. Стартує Happy Hour. Екрани мають змінювати контент автоматично, а не після чергового дзвінка програмісту.">
+          Menus change. Lunch starts. Happy Hour begins. Your screens should keep up automatically — not after another call to IT.
+        </p>
+        <p class="segment__solution"
+           data-en="Schedule every promotion in a few clicks and let your screens switch content automatically throughout the day."
+           data-uk="Заплануйте всі акції за кілька кліків — екрани самі покажуть потрібний контент у потрібний час.">
+          Schedule every promotion in a few clicks and let your screens switch content automatically throughout the day.
+        </p>
+      </div>
+
+      <!-- Fuel Stations -->
+      <div class="segment reveal">
+        <div class="segment__icon" aria-hidden="true">⛽</div>
+        <!-- [Assumption — translated from RU original] -->
+        <h3 class="segment__title"
+            data-en="Fuel Stations &amp; Networks"
+            data-uk="АЗС та мережі">Fuel Stations &amp; Networks</h3>
+        <p class="segment__pain"
+           data-en="Managing promotions across multiple locations shouldn't require IT every week."
+           data-uk="Керувати акціями на кількох точках не повинно означати звернення до IT щотижня.">
+          Managing promotions across multiple locations shouldn't require IT every week.
+        </p>
+        <p class="segment__solution"
+           data-en="Update content in minutes and keep every location showing the right promotion at the right time."
+           data-uk="Оновлюйте контент за кілька хвилин — і всі точки автоматично показуватимуть потрібні пропозиції за розкладом.">
+          Update content in minutes and keep every location showing the right promotion at the right time.
+        </p>
+      </div>
+
+      <!-- Fitness / Hotels / Beauty -->
+      <div class="segment reveal">
+        <div class="segment__icon" aria-hidden="true">🏋</div>
+        <h3 class="segment__title"
+            data-en="Fitness • Hotels • Beauty"
+            data-uk="Фітнес • Готелі • Б'юті">Fitness • Hotels • Beauty</h3>
+        <p class="segment__pain"
+           data-en="Your screens shouldn't become expensive digital posters."
+           data-uk="Ваші екрани не повинні бути дорогими цифровими плакатами.">
+          Your screens shouldn't become expensive digital posters.
+        </p>
+        <p class="segment__solution"
+           data-en="Show class schedules, welcome messages and promotions automatically — without asking anyone to update the screen."
+           data-uk="Автоматично показуйте розклад, welcome-повідомлення та акції — без участі програміста.">
+          Show class schedules, welcome messages and promotions automatically — without asking anyone to update the screen.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<div class="section__divider" role="separator"></div>
+
+<!-- ============================================================
+     SECTION 5: OFFER / VALUE
+     ============================================================ -->
+<section id="offer" aria-label="What's included">
+  <div class="section">
+
+    <div class="reveal">
+      <p class="section__label" data-en="What's Included" data-uk="Що входить">What's Included</p>
+      <h2 class="section__title"
+          data-en="Everything you need, nothing you don't"
+          data-uk="Все потрібне — нічого зайвого">Everything you need, nothing you don't</h2>
+    </div>
+
+    <div class="offer-grid reveal">
+
+      <!-- Included features table -->
+      <div class="offer-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th data-en="What" data-uk="Що">What</th>
+              <th data-en="Details" data-uk="Деталі">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><strong data-en="Installation" data-uk="Встановлення">Installation</strong></td>
+              <!-- [Assumption — translated from RU original] -->
+              <td data-en="Widget setup on the client's server. One time, 30–60 min."
+                  data-uk="Налаштування на сервері клієнта. Один раз, 30–60 хв.">
+                Widget setup on the client's server. One time, 30–60 min.
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><strong data-en="Hosting transfer" data-uk="Перенос хостингу">Hosting transfer</strong></td>
+              <!-- [Assumption — translated from RU original] -->
+              <td data-en="Help renting a VPS or migrating to your existing server. Data stays with you, not us."
+                  data-uk="Допомога з орендою VPS або переносом. Дані — у клієнта, не у нас.">
+                Help renting a VPS or migrating to your existing server. Data stays with you, not us.
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><strong data-en="Control panel (Web UI)" data-uk="Пульт управління (Web UI)">Control panel (Web UI)</strong></td>
+              <!-- [Assumption — translated from RU original] -->
+              <td data-en="No technical knowledge required: upload video, set time, save."
+                  data-uk="Без технічних знань: завантажуй відео, встав час, збережи.">
+                No technical knowledge required: upload video, set time, save.
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><strong data-en="Support" data-uk="Супровід">Support</strong></td>
+              <!-- [Assumption — translated from RU original] -->
+              <td data-en="Help with setup and questions. Volume depends on package."
+                  data-uk="Допомога з налаштуванням і питаннями. Обсяг — за пакетом.">
+                Help with setup and questions. Volume depends on package.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- vs SaaS -->
+      <div>
+        <h3 style="font-size:1rem;font-weight:700;margin-bottom:0.75rem;letter-spacing:-0.01em;"
+            data-en="WVS vs. SaaS alternatives"
+            data-uk="WVS проти SaaS-альтернатив">WVS vs. SaaS alternatives</h3>
+
+        <div class="compare-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th class="highlight-col-header">Web Video Scheduler</th>
+                <th data-en="SaaS (ScreenCloud, Rise Vision)" data-uk="SaaS (ScreenCloud, Rise Vision)">SaaS (ScreenCloud, Rise Vision)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-en="Payment" data-uk="Оплата">Payment</td>
+                <!-- [Assumption — translated from RU original] -->
+                <td class="highlight-col"
+                    data-en="One-time, no subscription"
+                    data-uk="Разово, без підписки">One-time, no subscription</td>
+                <td data-en="$15–36 / screen / month — forever"
+                    data-uk="$15–36 / екран / місяць — назавжди">$15–36 / screen / month — forever</td>
+              </tr>
+              <tr>
+                <td data-en="Data" data-uk="Дані">Data</td>
+                <td class="highlight-col"
+                    data-en="On your own server"
+                    data-uk="На вашому сервері">On your own server</td>
+                <td data-en="In vendor's cloud"
+                    data-uk="У хмарі вендора">In vendor's cloud</td>
+              </tr>
+              <tr>
+                <td data-en="Dependency" data-uk="Залежність">Dependency</td>
+                <td class="highlight-col"
+                    data-en="None (after install)"
+                    data-uk="Немає (після встановлення)">None (after install)</td>
+                <td data-en="Permanent (SaaS)"
+                    data-uk="Постійна (SaaS)">Permanent (SaaS)</td>
+              </tr>
+              <tr>
+                <td data-en="Example cost, 1 year (1 screen)" data-uk="Приклад економії (1 рік, 1 екран)">Example cost, 1 year (1 screen)</td>
+                <td class="highlight-col"
+                    data-en="€80–100 once"
+                    data-uk="€80–100 один раз">€80–100 once</td>
+                <td data-en="$120–430 per year"
+                    data-uk="$120–430 щорічно">$120–430 per year</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- [Assumption — translated from RU original] -->
+        <p class="key-argument"
+           data-en="No monthly bill. For a small business that watches its costs, this is a fundamental difference."
+           data-uk="Жодного щомісячного рахунку. Для малого бізнесу, який рахує гроші, це принципова різниця.">
+          No monthly bill. For a small business that watches its costs, this is a fundamental difference.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<div class="section__divider" role="separator"></div>
+
+<!-- ============================================================
+     SECTION 6: PRICING (Hypotheses A/B/C/D)
+     ============================================================ -->
+<section id="pricing" aria-label="Pricing">
+  <div class="section">
+
+    <div class="reveal">
+      <p class="section__label" data-en="Pricing" data-uk="Ціни">Pricing</p>
+      <h2 class="section__title"
+          data-en="Choose your package"
+          data-uk="Оберіть пакет">Choose your package</h2>
+      <p class="section__sub"
+         data-en="One-time payment. No subscriptions. Pick what fits."
+         data-uk="Разова оплата. Без підписок. Оберіть те, що підходить.">
+        One-time payment. No subscriptions. Pick what fits.
+      </p>
+    </div>
+
+    <div class="pricing-warning reveal"
+         data-en="All prices are hypotheses A / B / C / D — preliminary figures, subject to change before launch."
+         data-uk="Всі ціни — гіпотези А / Б / В / Г — попередні цифри, можуть змінитись до запуску.">
+      All prices are hypotheses A / B / C / D — preliminary figures, subject to change before launch.
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- Package A -->
+      <div class="pricing-card reveal">
+        <p class="pricing-card__pkg" data-en="Package A — Hypothesis" data-uk="Пакет А — Гіпотеза">Package A — Hypothesis</p>
+        <!-- [Assumption — translated from RU original] -->
+        <p class="pricing-card__name"
+           data-en="Single Location"
+           data-uk="Одна точка">Single Location</p>
+        <div class="pricing-card__price">
+          €80–100
+          <span data-en="one-time payment" data-uk="разова оплата">one-time payment</span>
+        </div>
+        <span class="badge-preliminary"
+              data-en="preliminary · subject to change"
+              data-uk="попередньо · може змінитись">preliminary · subject to change</span>
+        <p class="pricing-card__for"
+           data-en="For: restaurants, cafés, one screen."
+           data-uk="Для: ресторанів, кафе, одного екрана.">
+          For: restaurants, cafés, one screen.
+        </p>
+        <ul class="pricing-card__includes">
+          <li data-en="Installation &amp; server setup" data-uk="Встановлення &amp; налаштування сервера">Installation &amp; server setup</li>
+          <li data-en="Control panel (Web UI)" data-uk="Пульт управління (Web UI)">Control panel (Web UI)</li>
+          <li data-en="Hosting setup help" data-uk="Допомога з хостингом">Hosting setup help</li>
+          <li data-en="Basic support" data-uk="Базовий супровід">Basic support</li>
+        </ul>
+      </div>
+
+      <!-- Package B -->
+      <div class="pricing-card reveal">
+        <p class="pricing-card__pkg" data-en="Package B — Hypothesis" data-uk="Пакет Б — Гіпотеза">Package B — Hypothesis</p>
+        <!-- [Assumption — translated from RU original] -->
+        <p class="pricing-card__name"
+           data-en="Multiple Locations"
+           data-uk="Кілька точок">Multiple Locations</p>
+        <div class="pricing-card__price">
+          €180–250
+          <span data-en="one-time payment" data-uk="разова оплата">one-time payment</span>
+        </div>
+        <span class="badge-preliminary"
+              data-en="preliminary · subject to change"
+              data-uk="попередньо · може змінитись">preliminary · subject to change</span>
+        <p class="pricing-card__for"
+           data-en="For: 2–4 locations or high content-change frequency."
+           data-uk="Для: 2–4 точок або частих змін контенту.">
+          For: 2–4 locations or high content-change frequency.
+        </p>
+        <ul class="pricing-card__includes">
+          <li data-en="Everything in Package A" data-uk="Всe з Пакету А">Everything in Package A</li>
+          <li data-en="Multi-location setup" data-uk="Налаштування кількох точок">Multi-location setup</li>
+          <li data-en="Extended 30-day support" data-uk="Розширений супровід 30 днів">Extended 30-day support</li>
+        </ul>
+      </div>
+
+      <!-- Package C -->
+      <div class="pricing-card reveal">
+        <p class="pricing-card__pkg" data-en="Package C — Hypothesis" data-uk="Пакет В — Гіпотеза">Package C — Hypothesis</p>
+        <!-- [Assumption — translated from RU original] -->
+        <p class="pricing-card__name"
+           data-en="Network (5+ locations)"
+           data-uk="Мережа (5+ точок)">Network (5+ locations)</p>
+        <div class="pricing-card__price">
+          €450–1500
+          <span data-en="one-time · per project" data-uk="разово · за проект">one-time · per project</span>
+        </div>
+        <span class="badge-preliminary"
+              data-en="preliminary · subject to change"
+              data-uk="попередньо · може змінитись">preliminary · subject to change</span>
+        <p class="pricing-card__for"
+           data-en="For: fuel station networks, restaurant chains."
+           data-uk="Для: мереж АЗС, ресторанних мереж.">
+          For: fuel station networks, restaurant chains.
+        </p>
+        <ul class="pricing-card__includes">
+          <li data-en="Full network setup" data-uk="Повне налаштування мережі">Full network setup</li>
+          <li data-en="Custom support plan" data-uk="Індивідуальний план супроводу">Custom support plan</li>
+          <li data-en="Price depends on scope" data-uk="Ціна залежить від обсягу">Price depends on scope</li>
+        </ul>
+      </div>
+
+      <!-- Package D -->
+      <div class="pricing-card reveal">
+        <p class="pricing-card__pkg" data-en="Package D — Hypothesis" data-uk="Пакет Г — Гіпотеза">Package D — Hypothesis</p>
+        <!-- [Assumption — translated from RU original] -->
+        <p class="pricing-card__name"
+           data-en="Monthly Support (optional add-on)"
+           data-uk="Щомісячний супровід (опція)">Monthly Support (optional add-on)</p>
+        <div class="pricing-card__price">
+          €20–50
+          <span data-en="per month · optional" data-uk="на місяць · опціонально">per month · optional</span>
+        </div>
+        <span class="badge-preliminary"
+              data-en="preliminary · subject to change"
+              data-uk="попередньо · може змінитись">preliminary · subject to change</span>
+        <p class="pricing-card__for"
+           data-en='For: clients who want "you watch it for us". Offered after main purchase.'
+           data-uk='Для: клієнтів, яким потрібне "ви стежите за нас". Пропонується після основної покупки.'>
+          For: clients who want "you watch it for us". Offered after main purchase.
+        </p>
+        <ul class="pricing-card__includes">
+          <li data-en="Monitoring &amp; updates" data-uk="Моніторинг &amp; оновлення">Monitoring &amp; updates</li>
+          <li data-en="Priority response" data-uk="Пріоритетна відповідь">Priority response</li>
+          <li data-en="Optional — not required" data-uk="Необов'язково — не обов'язково">Optional — not required</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<div class="section__divider" role="separator"></div>
+
+<!-- ============================================================
+     SECTION 7: CTA
+     ============================================================ -->
+<section id="contact" aria-label="Contact">
+  <div class="cta-section">
+    <div class="cta-section__inner reveal">
+      <h2 class="cta-section__title"
+          data-en="See how easy it is."
+          data-uk="Подивіться, наскільки це просто.">See how easy it is.</h2>
+      <p class="cta-section__sub"
+         data-en="We'll show you how WVS works in just 10 minutes. No pressure. No obligation."
+         data-uk="За 10 хвилин покажемо, як працює WVS саме для вашого бізнесу. Без жодних зобов'язань.">
+        We'll show you how WVS works in just 10 minutes. No pressure. No obligation.
+      </p>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="contact-form__row">
+          <input type="text" id="cfName" class="contact-form__input"
+                 data-placeholder-en="Your name" data-placeholder-uk="Ваше ім'я"
+                 placeholder="Your name" autocomplete="name" />
+          <input type="text" id="cfContact" class="contact-form__input"
+                 data-placeholder-en="Telegram / email / phone" data-placeholder-uk="Telegram / email / телефон"
+                 placeholder="Telegram / email / phone" autocomplete="off" />
+        </div>
+        <textarea id="cfMessage" class="contact-form__textarea"
+                  data-placeholder-en="What's your situation?" data-placeholder-uk="Яка у вас ситуація?"
+                  placeholder="What's your situation?" rows="3"></textarea>
+        <button type="submit" class="btn-primary">
+          <span data-en="Send →" data-uk="Надіслати →">Send →</span>
+        </button>
+      </form>
+
+      <div class="contact-form__thanks" id="cfThanks">
+        <span class="contact-form__thanks-icon" aria-hidden="true">✓</span>
+        <p data-en="Thank you! We'll be in touch soon." data-uk="Дякуємо! Скоро зв'яжемось.">Thank you! We'll be in touch soon.</p>
+      </div>
+
+      <p class="cta-section__secondary">
+        <span data-en="Or write directly: " data-uk="Або напишіть напряму: ">Or write directly: </span>
+        <a href="https://t.me/Boeing911" target="_blank" rel="noopener">@Boeing911</a>
+        <span data-en=" on Telegram" data-uk=" у Telegram"> on Telegram</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer" role="contentinfo">
+  <p>
+    <span data-en="Web Video Scheduler — Pay once. No monthly subscription."
+          data-uk="Web Video Scheduler — Платите раз. Без підписок.">
+      Web Video Scheduler — Pay once. No monthly subscription.
+    </span>
+    &nbsp;·&nbsp;
+    <a href="https://t.me/Boeing911" target="_blank" rel="noopener">@Boeing911</a>
+    &nbsp;·&nbsp;
+    <a href="demo.html" data-en="Try the demo" data-uk="Спробувати демо">Try the demo</a>
+  </p>
+</footer>
+
+<!-- Scripts: lang first, then page logic -->
+<script src="lang.js"></script>
+<script>
+  // Contact form mock — no backend, show thank-you on submit
+  (function () {
+    var form   = document.getElementById('contactForm');
+    var thanks = document.getElementById('cfThanks');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        form.style.display = 'none';
+        thanks.classList.add('show');
+      });
+    }
+  }());
+</script>
+<script>
+  // Nav scroll effect
+  (function () {
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function () {
+      nav.classList.toggle('nav--scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // Hamburger
+    var burger = document.getElementById('hamburger');
+    var menu   = document.getElementById('mobileMenu');
+    burger.addEventListener('click', function () {
+      var open = menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open);
+    });
+
+    // Close mobile menu on link click
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        menu.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Scroll-reveal via IntersectionObserver
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  }());
+</script>
+</body>
+</html>
