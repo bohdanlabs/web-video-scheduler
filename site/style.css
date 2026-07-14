@@ -32,12 +32,13 @@ body {
   /* Ambient glow + grid extends the hero's visual language across all sections */
   background-color: var(--bg);
   background-image:
-    radial-gradient(ellipse 90% 55% at 15% 8%, rgba(0,212,255,0.055) 0%, transparent 42%),
-    radial-gradient(ellipse 75% 55% at 82% 92%, rgba(124,58,237,0.07) 0%, transparent 42%),
-    linear-gradient(rgba(0,212,255,0.016) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,212,255,0.016) 1px, transparent 1px);
-  background-size: auto, auto, 50px 50px, 50px 50px;
-  background-attachment: scroll, scroll, fixed, fixed;
+    radial-gradient(ellipse 90% 55% at 15% 8%, rgba(0,212,255,0.13) 0%, transparent 50%),
+    radial-gradient(ellipse 75% 55% at 82% 92%, rgba(124,58,237,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(0,212,255,0.04) 0%, transparent 60%),
+    linear-gradient(rgba(0,212,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.022) 1px, transparent 1px);
+  background-size: auto, auto, auto, 50px 50px, 50px 50px;
+  background-attachment: scroll, scroll, scroll, fixed, fixed;
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -614,6 +615,27 @@ button, input, select { font-family: inherit; }
   align-items: start;
 }
 
+.offer-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.offer-block__title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border2);
+}
+
+.offer-grid > .offer-block + .offer-block {
+  padding-left: 2rem;
+  border-left: 1px solid var(--border2);
+}
+
 .offer-table-wrap {
   overflow-x: auto;
   border-radius: var(--radius);
@@ -649,7 +671,7 @@ tr:last-child td { border-bottom: none; }
 
 .compare-table-wrap {
   overflow-x: auto;
-  margin-top: 2rem;
+  margin-top: 1rem;
   border-radius: var(--radius);
   border: 1px solid var(--border);
 }
@@ -1491,6 +1513,12 @@ tr:last-child td { border-bottom: none; }
   .steps { grid-template-columns: 1fr; }
   .segments { grid-template-columns: 1fr; }
   .offer-grid { grid-template-columns: 1fr; }
+  .offer-grid > .offer-block + .offer-block {
+    padding-left: 0;
+    border-left: none;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border2);
+  }
   .pricing-grid { grid-template-columns: repeat(2, 1fr); }
 
   .slot-grid-header { grid-template-columns: 60px 100px 1fr auto; }
