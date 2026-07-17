@@ -450,18 +450,11 @@
       </p>
     </div>
 
-    <div class="pricing-warning reveal"
-         data-en="All prices are hypotheses A / B / C / D — preliminary figures, subject to change before launch."
-         data-uk="Всі ціни — гіпотези А / Б / В / Г — попередні цифри, можуть змінитись до запуску.">
-      All prices are hypotheses A / B / C / D — preliminary figures, subject to change before launch.
-    </div>
-
     <div class="pricing-grid">
 
-      <!-- Package A -->
+      <!-- Package Starter -->
       <div class="pricing-card reveal">
-        <p class="pricing-card__pkg" data-en="Package A — Hypothesis" data-uk="Пакет А — Гіпотеза">Package A — Hypothesis</p>
-        <!-- [Assumption — translated from RU original] -->
+        <p class="pricing-card__pkg" data-en="Starter" data-uk="Старт">Starter</p>
         <p class="pricing-card__name"
            data-en="Single Location"
            data-uk="Одна точка">Single Location</p>
@@ -469,9 +462,6 @@
           €80–100
           <span data-en="one-time payment" data-uk="разова оплата">one-time payment</span>
         </div>
-        <span class="badge-preliminary"
-              data-en="preliminary · subject to change"
-              data-uk="попередньо · може змінитись">preliminary · subject to change</span>
         <p class="pricing-card__for"
            data-en="For: restaurants, cafés, one screen."
            data-uk="Для: ресторанів, кафе, одного екрана.">
@@ -485,10 +475,9 @@
         </ul>
       </div>
 
-      <!-- Package B -->
+      <!-- Package Business -->
       <div class="pricing-card reveal">
-        <p class="pricing-card__pkg" data-en="Package B — Hypothesis" data-uk="Пакет Б — Гіпотеза">Package B — Hypothesis</p>
-        <!-- [Assumption — translated from RU original] -->
+        <p class="pricing-card__pkg" data-en="Business" data-uk="Бізнес">Business</p>
         <p class="pricing-card__name"
            data-en="Multiple Locations"
            data-uk="Кілька точок">Multiple Locations</p>
@@ -496,35 +485,28 @@
           €180–250
           <span data-en="one-time payment" data-uk="разова оплата">one-time payment</span>
         </div>
-        <span class="badge-preliminary"
-              data-en="preliminary · subject to change"
-              data-uk="попередньо · може змінитись">preliminary · subject to change</span>
         <p class="pricing-card__for"
            data-en="For: 2–4 locations or high content-change frequency."
            data-uk="Для: 2–4 точок або частих змін контенту.">
           For: 2–4 locations or high content-change frequency.
         </p>
         <ul class="pricing-card__includes">
-          <li data-en="Everything in Package A" data-uk="Всe з Пакету А">Everything in Package A</li>
+          <li data-en="Everything in Starter" data-uk="Все зі Старту">Everything in Starter</li>
           <li data-en="Multi-location setup" data-uk="Налаштування кількох точок">Multi-location setup</li>
           <li data-en="Extended 30-day support" data-uk="Розширений супровід 30 днів">Extended 30-day support</li>
         </ul>
       </div>
 
-      <!-- Package C -->
+      <!-- Package Network -->
       <div class="pricing-card reveal">
-        <p class="pricing-card__pkg" data-en="Package C — Hypothesis" data-uk="Пакет В — Гіпотеза">Package C — Hypothesis</p>
-        <!-- [Assumption — translated from RU original] -->
+        <p class="pricing-card__pkg" data-en="Network" data-uk="Мережа">Network</p>
         <p class="pricing-card__name"
-           data-en="Network (5+ locations)"
-           data-uk="Мережа (5+ точок)">Network (5+ locations)</p>
+           data-en="5+ Locations"
+           data-uk="5+ точок">5+ Locations</p>
         <div class="pricing-card__price">
           €450–1500
           <span data-en="one-time · per project" data-uk="разово · за проект">one-time · per project</span>
         </div>
-        <span class="badge-preliminary"
-              data-en="preliminary · subject to change"
-              data-uk="попередньо · може змінитись">preliminary · subject to change</span>
         <p class="pricing-card__for"
            data-en="For: fuel station networks, restaurant chains."
            data-uk="Для: мереж АЗС, ресторанних мереж.">
@@ -537,20 +519,16 @@
         </ul>
       </div>
 
-      <!-- Package D -->
+      <!-- Package Support -->
       <div class="pricing-card reveal">
-        <p class="pricing-card__pkg" data-en="Package D — Hypothesis" data-uk="Пакет Г — Гіпотеза">Package D — Hypothesis</p>
-        <!-- [Assumption — translated from RU original] -->
+        <p class="pricing-card__pkg" data-en="Support" data-uk="Підтримка">Support</p>
         <p class="pricing-card__name"
-           data-en="Monthly Support (optional add-on)"
-           data-uk="Щомісячний супровід (опція)">Monthly Support (optional add-on)</p>
+           data-en="Monthly Add-on"
+           data-uk="Щомісячний супровід">Monthly Add-on</p>
         <div class="pricing-card__price">
           €20–50
           <span data-en="per month · optional" data-uk="на місяць · опціонально">per month · optional</span>
         </div>
-        <span class="badge-preliminary"
-              data-en="preliminary · subject to change"
-              data-uk="попередньо · може змінитись">preliminary · subject to change</span>
         <p class="pricing-card__for"
            data-en='For: clients who want "you watch it for us". Offered after main purchase.'
            data-uk='Для: клієнтів, яким потрібне "ви стежите за нас". Пропонується після основної покупки.'>
@@ -585,28 +563,6 @@
         We'll show you how WVS works in just 10 minutes. No pressure. No obligation.
       </p>
 
-      <form class="contact-form" id="contactForm" novalidate>
-        <div class="contact-form__row">
-          <input type="text" id="cfName" class="contact-form__input"
-                 data-placeholder-en="Your name" data-placeholder-uk="Ваше ім'я"
-                 placeholder="Your name" autocomplete="name" />
-          <input type="text" id="cfContact" class="contact-form__input"
-                 data-placeholder-en="Telegram / email / phone" data-placeholder-uk="Telegram / email / телефон"
-                 placeholder="Telegram / email / phone" autocomplete="off" />
-        </div>
-        <textarea id="cfMessage" class="contact-form__textarea"
-                  data-placeholder-en="What's your situation?" data-placeholder-uk="Яка у вас ситуація?"
-                  placeholder="What's your situation?" rows="3"></textarea>
-        <button type="submit" class="btn-primary">
-          <span data-en="Send →" data-uk="Надіслати →">Send →</span>
-        </button>
-      </form>
-
-      <div class="contact-form__thanks" id="cfThanks">
-        <span class="contact-form__thanks-icon" aria-hidden="true">✓</span>
-        <p data-en="Thank you! We'll be in touch soon." data-uk="Дякуємо! Скоро зв'яжемось.">Thank you! We'll be in touch soon.</p>
-      </div>
-
       <p class="cta-section__secondary">
         <span data-en="Or write directly: " data-uk="Або напишіть напряму: ">Or write directly: </span>
         <a href="https://t.me/Boeing911" target="_blank" rel="noopener">@Boeing911</a>
@@ -636,20 +592,6 @@
 
 <!-- Scripts: lang first, then page logic -->
 <script src="lang.js"></script>
-<script>
-  // Contact form mock — no backend, show thank-you on submit
-  (function () {
-    var form   = document.getElementById('contactForm');
-    var thanks = document.getElementById('cfThanks');
-    if (form) {
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        form.style.display = 'none';
-        thanks.classList.add('show');
-      });
-    }
-  }());
-</script>
 <script>
   // Nav scroll effect
   (function () {
